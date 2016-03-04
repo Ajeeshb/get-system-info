@@ -1,0 +1,14 @@
+---
+- hosts: ubuntu
+  remote_user: ubuntu
+  gather_facts: false
+  tasks:
+    - name: show OS version
+      shell: cat /etc/issue
+      register: out
+    - debug: var=out.stdout_lines
+    - name: show openssl version
+      shell: dpkg -l | grep openssl
+      register: out
+    - debug: var=out.stdout_lines
+...
